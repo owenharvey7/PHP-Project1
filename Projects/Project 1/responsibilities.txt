@@ -1,13 +1,11 @@
-Tasks That need to be completed: 
+Tasks That need to be Assigned: 
 
   - Setup PHP page for the create new users page (Hashing/Sessions/SQL)
-  - Create php form for the User Login page (Database/Sessions/SQL)
-  - Main page - display results according to filters (SQL Queries / Display Data / Main Content)
   - Setup session verification throughout app so that unauthenticated users cannot access (Sessions/UserDB queries/PHP)
 
 
 Owen: 
-  To Do -
+  To Do - Main page - display results according to filters (SQL Queries / Display Data / Main Content)
   In Progress -
   Completed -
 
