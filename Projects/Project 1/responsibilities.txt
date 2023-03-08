@@ -1,0 +1,19 @@
+Owen: 
+  To Do-
+  In Progress-
+  Completed-
+
+Ricardo: 
+  To Do-
+  In Progress-
+  Completed-
+
+Nathen: 
+  To Do-
+  In Progress-
+  Completed-
+
+Hobee: 
+  To Do-
+  In Progress-
+  Completed-
