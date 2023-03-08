@@ -21,3 +21,9 @@ Hobee:
   To Do-
   In Progress-
   Completed-
+  
+  
+  Task1: Setup PHP page for the create new users page (Hashing/Sessions/SQL)
+  Task2: Create php form for the User Login page (Database/Sessions/SQL)
+  Task3: Main page - display results according to filters (SQL Queries / Display Data / Main Content)
+  Task4: Setup session verification throughout app so that unauthenticated users cannot access (Sessions/UserDB queries/PHP)
