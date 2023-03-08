@@ -7,7 +7,7 @@ Tasks That need to be Assigned:
 Owen: 
   To Do - Main page - display results according to filters (SQL Queries / Display Data / Main Content)
   In Progress - Footer.html, Header.html
-  Completed -
+  Completed - Layout.css
 
 Ricardo: 
   To Do - Create php form for the User Login page (Database/Sessions/SQL)
