@@ -21,6 +21,6 @@ Nathen:
 
 Hobee: 
   To Do -
-  In Progress -
+  In Progress - Register and Loggingin (needs to be changed to fit the format of our HTMl but other than that it will work otherwise)
   Completed -
   
