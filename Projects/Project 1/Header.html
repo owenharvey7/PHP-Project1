@@ -1,1 +1,21 @@
+<?php
+// This page begins the HTML header for the site.
+
+// Check for a $page_title value:
+if (!isset($page_title)) {
+	$page_title = 'User Registration';
+}
+?>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset = "utf-8" />
+    <title><?php echo $page_title; ?></title>
+    <style type="text/css" media="screen">@import "Layout.css";</style>
+</head>
+<body>
+<div id="Header">Ron's Red Book</div>
+<div id="Content">
+    <!-- End of Header -->
 

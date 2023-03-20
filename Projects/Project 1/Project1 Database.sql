@@ -12,7 +12,7 @@ CREATE TABLE car_owners (
                       PRIMARY KEY (userID)
 );
 
-password_hash($password, PASSWORD_DEFAULT);
+
 
 
 #Insert values into the car_owners table.
