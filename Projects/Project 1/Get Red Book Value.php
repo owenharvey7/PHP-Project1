@@ -40,12 +40,6 @@ try {
 //Array list of years, car makes, and car models
 $carYear_error = "";
 $carYear_arr = array(
-    "2010" => "2010",
-    "2011" => "2011",
-    "2012" => "2012",
-    "2013" => "2013",
-    "2014" => "2014",
-    "2015" => "2015",
     "2016" => "2016",
     "2017" => "2017",
     "2018" => "2018",
@@ -57,41 +51,13 @@ $carYear_arr = array(
 );
 $carMake_error = "";
 $carMake_arr = array(
-    "Acura" => "Acura",
-    "Audi" => "Audi",
-    "BMW" => "BMW",
-    "Buick" => "Buick",
-    "Cadillac" => "Cadillac",
-    "Chevrolet" => "Chevrolet",
-    "Chrysler" => "Chrysler",
-    "Dodge" => "Dodge",
-    "Ferrari" => "Ferrari",
-    "Fiat" => "Fiat",
     "Ford" => "Ford",
-    "GMC" => "GMC",
     "Honda" => "Honda",
-    "Hyundai" => "Hyundai",
-    "Infiniti" => "Infiniti",
-    "Jaguar" => "Jaguar",
-    "Jeep" => "Jeep",
-    "Kia" => "Kia",
-    "Lamborghini" => "Lamborghini",
-    "Land Rover" => "Land Rover",
-    "Lexus" => "Lexus",
-    "Lincoln" => "Lincoln",
-    "Maserati" => "Maserati",
-    "Mazda" => "Mazda",
-    "Mercedes-Benz" => "Mercedes-Benz",
-    "Mini" => "Mini",
-    "Mitsubishi" => "Mitsubishi",
-    "Nissan" => "Nissan",
-    "Porsche" => "Porsche",
-    "Ram" => "Ram",
-    "Subaru" => "Subaru",
-    "Tesla" => "Tesla",
     "Toyota" => "Toyota",
-    "Volkswagen" => "Volkswagen",
-    "Volvo" => "Volvo",
+    "Chevy" => "Chevy",
+    "Dodge" => "Dodge",
+    "Jeep" => "Jeep",
+    "Tesla" => "Tesla",
 );
 $carModel_error = "";
 $carModel_arr = array(
@@ -260,6 +226,6 @@ if ($displayform){
 }
 
 //search a new car
-echo "<br><p><a href=\"Test.php\">Look for another car value</a></p>\n";
+echo "<br><p><a href=\"Get%20Red%20Book%20Value.php.php\">Look for another car value</a></p>\n";
 
 ?>
