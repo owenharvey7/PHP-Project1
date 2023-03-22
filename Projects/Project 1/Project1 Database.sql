@@ -13,8 +13,6 @@ CREATE TABLE car_owners (
 );
 
 
-
-
 #Insert values into the car_owners table.
 INSERT INTO car_owners (first_name, last_name, email, password) VALUES ('John', 'Smith', 'JohnSmith@gmail.com', 'password123');
 
@@ -50,16 +48,33 @@ DROP TABLE IF EXISTS users_cars;
 CREATE TABLE users_cars (
                       userID INT NOT NULL,
                       carID INT NOT NULL,
-                      private_price INT,
-                      suggested_retail_price INT,
-                      certified_pre_owned_price INT,
                       PRIMARY KEY (userID, carID),
                       FOREIGN KEY (userID) REFERENCES car_owners(userID),
                       FOREIGN KEY (carID) REFERENCES cars(carID)
 );
 
 #Insert values into the users_cars table.
-INSERT INTO users_cars (userID, carID, private_price, suggested_retail_price, certified_pre_owned_price) VALUES (1, 1, 20000, 25000, 30000);
+INSERT INTO users_cars (userID, carID) VALUES (1, 1);
+
+
+#Create a table to store all of the users searches for cars.
+
+USE search_history;
+
+DROP TABLE IF EXISTS search_history;
+
+CREATE TABLE search_history (
+                      searchID INT NOT NULL AUTO_INCREMENT,
+                      userID INT NOT NULL,
+                      make VARCHAR(50) NOT NULL,
+                      model VARCHAR(50) NOT NULL,
+                      year INT NOT NULL,
+                      base_price INT NOT NULL,
+                      PRIMARY KEY (SearchID)
+);
+
+#Insert values into the search_history table.
+
 
 
 
