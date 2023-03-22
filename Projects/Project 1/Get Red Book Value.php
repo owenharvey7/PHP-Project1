@@ -173,14 +173,10 @@ if (isset($_POST['submit-button'])) {
 
 }
 
-
-//search a new car
-echo "<br><br><p><a href=\"Get%20Red%20Book%20Value.php\">Look for another car value</a></p>\n";
-
 if ($displayform){
 ?>
 
-<p>Use the following form to find the value of your car:</p>
+<h2><center>Use the following form to find the value of your car:</center></h2>
 <form method="post" action="Get%20Red%20Book%20Value.php">
     <fieldset>
         <legend>Enter the Year of Your Car:</legend>
@@ -234,4 +230,6 @@ if ($displayform){
 
 <?php
 }
+//search a new car
+echo "<br><p><a href=\"Get%20Red%20Book%20Value.php\">Look for another car value</a></p>\n";
 ?>
