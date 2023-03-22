@@ -21,6 +21,8 @@
 </head>
 <body>
 
+<h2>Ron's Red Book Appraisal</h2>
+
 <?php
 // Connect to MySQL Server
 require_once 'login.php';
@@ -155,31 +157,57 @@ if (isset($_POST['submit-button'])) {
 
     //if statement for if the car is in the database
     if($result->rowCount() > 0) {
-        echo "<br><br>There is a ", $carYear , " ", $carMake , " ", $carModel , " in our database.";
+        //variable to store $row['base_price']
+        $basePrice = 0;
+
+        echo "<center><h4><br><br>There is a ", $carYear , " ", $carMake , " ", $carModel , " in our database:</h4></center>";
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            $basePrice = $row['base_price'];
             $table .= "<tr><td>" . $row['make'] . "</td><td>" . $row['model'] . "</td><td>" . $row['year'] . "</td><td>" . $row['base_price'] . "</td></tr>";
         }
         $table .= "</table>";
         echo $table;
         $displayform = false;
+
+        //send the value of $basePrice to the Display Values.php
+
+
+
+        //display car value if sold to a private owner, suggested retail price (15% more than suggested retail), and certified pre-owned value (10% over
+        //private owner value).
+        echo "<center><h4>Car Values Depending on Vendor:</h4></center>";
+
+        $privateOwner = $basePrice * .85;
+        $suggestedRetail = $basePrice * 1.15;
+        $certifiedPreOwned = $basePrice * 1.10;
+
+        //show values in a table
+        echo "<table width='100%' border='1'>";
+        echo "<tr><th>Private Owner</th><th>Suggested Retail</th><th>Certified Pre-Owned</th></tr>";
+        echo "<tr><td>$", $privateOwner, "</td><td>$", $suggestedRetail, "</td><td>$", $certifiedPreOwned, "</td></tr>";
+        echo "</table>";
+
+
+
+
+
     } else {
         echo "<br><br>There is no ", $carYear , " ", $carMake , " ", $carModel , " in our database.";
         $displayform = false;
     }
 
-//
 
-    } else {"Please enter a valid year, make, and model.";
+} else {"Please enter a valid year, make, and model.";
 
 }
 
 if ($displayform){
 ?>
 
-<h2><center>Use the following form to find the value of your car:</center></h2>
-<form method="post" action="Get%20Red%20Book%20Value.php">
+<h2><center>Use the following form to find the value of your Vehicle:</center></h2>
+<form method="post" action="Test.php">
     <fieldset>
-        <legend>Enter the Year of Your Car:</legend>
+        <legend>Enter the Year of Your Vehicle:</legend>
         <select name = 'carYear'>
             <?php
             foreach ($carYear_arr as $key => $value) {
@@ -192,7 +220,7 @@ if ($displayform){
 
 
     <fieldset>
-        <legend>Select the Make of Your Car:</legend>
+        <legend>Select the Make of Your Vehicle:</legend>
         <select name = carMake>
             <?php
             foreach ($carMake_arr as $key => $value) {
@@ -205,7 +233,7 @@ if ($displayform){
 
 
     <fieldset>
-        <legend>Select the Model of Your Car:</legend>
+        <legend>Select the Model of Your Vehicle:</legend>
         <select name = 'carModel'>
             <?php
             foreach ($carModel_arr as $key => $value) {
@@ -230,6 +258,8 @@ if ($displayform){
 
 <?php
 }
+
 //search a new car
-echo "<br><p><a href=\"Get%20Red%20Book%20Value.php\">Look for another car value</a></p>\n";
+echo "<br><p><a href=\"Test.php\">Look for another car value</a></p>\n";
+
 ?>
