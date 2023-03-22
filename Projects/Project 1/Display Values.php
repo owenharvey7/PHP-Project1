@@ -22,6 +22,8 @@ require "Test.php";
 //get $basePrice from Test.php
 $basePrice = $_SESSION['basePrice'];
 
+echo "The base price is : $basePrice";
+
 $finalPrice = 0;
 $carCondition_arr = array(
         "Excellent" => "Excellent",
@@ -35,7 +37,7 @@ $carMileage_arr = array(
     "40k-100k" => "40k-100k",
     "100k+" => "100k+");
 
-if (isset($_POST['submit-button'])) {
+if (isset($_POST['submitbutton'])) {
 
     //create variables for mileage and condition
     $carCondition = $_POST['carCondition'];
@@ -104,7 +106,7 @@ if (isset($_POST['submit-button'])) {
     </fieldset>
 
 <br><br>
-<input type="submit" name="submit-button"/>
+<input type="submit" name="submitbutton"/>
 <input type="reset" name="reset" value="Reset"/>
 
 </form>
