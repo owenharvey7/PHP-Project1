@@ -77,7 +77,7 @@ if (isset($_POST['submitbutton'])) {
 
 ?>
 <h2><center>Use the checkboxes to help us better value your vehicle:</center></h2>
-<form method="post" action="Display Values.php">
+<form method="post" action="Display%20Values.php">
 
 <fieldset>
     <legend>Select the condition of your Vehicle:</legend>
