@@ -173,6 +173,10 @@ if (isset($_POST['submit-button'])) {
         echo "</table>";
 
 
+        //search a new car
+        echo "<br><p><a href=\"Test.php\">Look for another car value</a></p>\n";
+
+
     } else {
         echo "<br><br>There is no ", $carYear, " ", $carMake, " ", $carModel, " in our database.";
         $displayform = false;
@@ -253,8 +257,7 @@ if ($displayform) {
     <?php
 }
 
-//search a new car
-echo "<br><p><a href=\"Test.php\">Look for another car value</a></p>\n";
+
 
 html_footer();
 

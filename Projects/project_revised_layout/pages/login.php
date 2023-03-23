@@ -105,10 +105,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </style>
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper mx-auto">
     <h2>Login</h2>
     <p>Please fill in your credentials to login.</p>
-    <div class="container mt-4">
+    <div class="container">
         <div class="card shadow">
             <div class="card-header">
                 <h3>Login</h3>
@@ -137,4 +137,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>
 
 </div>
+
+</body>
+</html>
 
