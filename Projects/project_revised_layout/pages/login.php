@@ -97,30 +97,47 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <style type="text/css">
         body{ font: 14px sans-serif; }
         .wrapper{ width: 350px; padding: 20px; }
     </style>
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper mx-auto">
     <h2>Login</h2>
     <p>Please fill in your credentials to login.</p>
-    <form  method="post">
-        <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-            <label>Username</label>
-            <input name="username" type="text" class="form-control">
+    <div class="container">
+        <div class="card shadow">
+            <div class="card-header">
+                <h3>Login</h3>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" id="username" name="username">
+                        <?php if (!empty($username_err)): ?>
+                            <span class="help-block"><?php echo $username_err; ?></span>
+                        <?php endif; ?>
+                    </div>
+                    <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                        <?php if (!empty($password_err)): ?>
+                            <span class="help-block"><?php echo $password_err; ?></span>
+                        <?php endif; ?>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <p>Don't have an account? <a href="registration.php">Sign up now</a>.</p>
+            </div>
+        </div>
+    </div>
 
-        </div>
-        <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-            <label>Password</label>
-            <input name="password" type="password" class="form-control">
-
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Login">
-        </div>
-        <p>Don't have an account? <a href="registration.php">Sign up now</a>.</p>
-    </form>
 </div>
+
+</body>
+</html>
 
