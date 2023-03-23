@@ -1,6 +1,6 @@
 <?php
 
-require_once 'login.php';
+require_once '../components/db_login.php';
 
 $errors = array();
 
@@ -40,6 +40,11 @@ if (isset($_POST['submit'])) {
             throw new PDOException($e->getMessage(), (int)$e->getCode());
         }
 
+
+        //hash password
+        $password = password_hash($password, PASSWORD_DEFAULT);
+
+
         $sql = "INSERT INTO users (firstname, lastname, username, email, password) VALUES ('$firstname', '$lastname', '$username', '$email', '$password')";
         $result = $pdo->query($sql);
         if($result->execute()){
@@ -51,23 +56,40 @@ if (isset($_POST['submit'])) {
 
 }
 ?>
-<form method="post" action="">
-    <label for="firstname">First Name:</label>
-    <input type="text" id="firstname" name="firstname" required><br>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <label for="lastname">Last Name:</label>
-    <input type="text" id="lastname" name="lastname" required><br>
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header">
+            <h3>Register</h3>
+        </div>
+        <div class="card-body">
+            <form method="post" action="">
+                <div class="form-group">
+                    <label for="firstname">First Name:</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
 
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required><br>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br>
-
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required><br>
-
-    <input type="submit" name="submit" value="Submit">
-</form>
 </body>
 </html>

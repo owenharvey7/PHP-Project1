@@ -6,6 +6,10 @@ body {
     background-color:white;
 }
 
+#bottle {
+    color: #8A1D01FF;
+}
+
 h1 {
     margin:0px 0px 15px 0px;
     padding:0px;
