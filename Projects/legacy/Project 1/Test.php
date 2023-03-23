@@ -267,6 +267,6 @@ if ($displayform){
 }
 
 //search a new car
-echo "<br><p><a href=\"Test.php\">Look for another car value</a></p>\n";
+echo ">Look for another car value</a></p>\n";
 
 ?>

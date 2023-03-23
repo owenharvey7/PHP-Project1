@@ -180,7 +180,7 @@ if ($displayform){
 <form>
 
     <p>Use the following form to find the value of your car:</p>
-    <form method="post" action="Get%20Red%20Book%20Value.php">
+    <form method="post" action="Get Red Book Value.php">
         <input type="text" id="carYear_error" class="error" size="40" value="<?php echo $carYear_error; ?>">
         <fieldset>
             <legend>Enter the Year of Your Car:</legend>
