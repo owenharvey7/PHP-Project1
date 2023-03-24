@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
             throw new PDOException($e->getMessage(), (int)$e->getCode());
         }
 
-$sql = "INSERT INTO users (firstname, lastname, username, email, password) VALUES ('$firstname', '$lastname', '$username', '$email', '$password')";
+$sql = "INSERT INTO car_owners (firstname, lastname, username, email, password) VALUES ('$firstname', '$lastname', '$username', '$email', '$password')";
         $result = $pdo->query($sql);
         if($result->execute()){
             echo '<p style="color: green;">User registration successful!</p>';
@@ -53,20 +53,20 @@ $sql = "INSERT INTO users (firstname, lastname, username, email, password) VALUE
 ?>
 <form method="post" action="">
     <label for="firstname">First Name:</label>
-    <input type="text" id="firstname" name="firstname" required><br>
-
+    <input type="text" id="firstname" name="firstname" required>
+    <br>
     <label for="lastname">Last Name:</label>
-    <input type="text" id="lastname" name="lastname" required><br>
-
+    <input type="text" id="lastname" name="lastname" required>
+    <br>
     <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required><br>
-
+    <input type="text" id="username" name="username" required>
+    <br>
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br>
-
+    <input type="email" id="email" name="email" required>
+    <br>
     <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required><br>
-
+    <input type="password" id="password" name="password" required>
+    <br>
     <input type="submit" name="submit" value="Submit">
 </form>
 </body>

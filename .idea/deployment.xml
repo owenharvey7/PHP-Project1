@@ -3,17 +3,10 @@
   <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
     <option name="confirmBeforeUploading" value="false" />
     <serverData>
-      <paths name="IUK Turing">
+      <paths name="Local">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="Local ENV">
-        <serverdata>
-          <mappings>
-            <mapping deploy="EXAMPLES" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="Project" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
