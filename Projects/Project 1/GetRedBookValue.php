@@ -11,7 +11,6 @@
             width: 5em;
             float: left;
         }
-
         .error {
             color: #ff0000;
             font-weight: bold;
@@ -22,18 +21,19 @@
 <body>
 
 <?php
+session_start();
 // Connect to MySQL Server
+include "Functions.php";
 require_once 'login.php';
-
-$displayform = true;
-$inputError = false;
-
 //Connect to MySQL Server: create a new object named $pdo
 try {
     $pdo = new PDO($dsn, $dbUser, $dbPassword);
 } catch (PDOException $e) {
     throw new PDOException($e->getMessage(), (int)$e->getCode());
 }
+$displayform = checkLogin($pdo);
+echo $_SESSION['userID'];
+$inputError = false;
 
 
 $carYear_error = "";
@@ -229,6 +229,7 @@ if ($displayform){
             <input type="submit" name="addCar" value="Find Car Value"/>&nbsp;&nbsp;
             <input type="reset" name="reset" value="Reset"/>
         </p>
+        <a href = "logout.php">Logout </a>
     </form>
 
     <?php
