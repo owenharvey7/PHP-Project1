@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" confirmBeforeUploading="false">
+  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
     <option name="confirmBeforeUploading" value="false" />
     <serverData>
-      <paths name="IUK Turing">
+      <paths name="Local">
         <serverdata>
           <mappings>
-            <mapping deploy="/PROJECT" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="Local ENV">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="Project" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

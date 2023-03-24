@@ -1,95 +1,105 @@
 <?php
-
-require_once '../components/db_login.php';
-
-$errors = array();
-
-if (isset($_POST['submit'])) {
-    $firstname = trim($_POST['firstname']);
-    $lastname = trim($_POST['lastname']);
-    $username = trim($_POST['username']);
-    $email = trim($_POST['email']);
-    $password = trim($_POST['password']);
-
-    // Check for empty fields
-    if (empty($firstname)) {
-        $errors[] = 'Firstname is required';
-    }
-    if (empty($lastname)) {
-        $errors[] = 'Lastname is required';
-    }
-    if (empty($username)) {
-        $errors[] = 'Username is required';
-    }
-    if (empty($email)) {
-        $errors[] = 'Email is required';
-    }
-    if (empty($password)) {
-        $errors[] = 'Password is required';
-    }
-
-    // If there are errors, display them
-    if (!empty($errors)) {
-        foreach ($errors as $error) {
-            echo '<p style="color: red;">' . $error . '</p>';
-        }
-    } else {
-        try {
-            $pdo = new PDO($dsn, $dbUser, $dbPassword);
-        } catch (PDOException $e) {
-            throw new PDOException($e->getMessage(), (int)$e->getCode());
-        }
-
-
-        //hash password
-        $password = password_hash($password, PASSWORD_DEFAULT);
-
-
-        $sql = "INSERT INTO users (firstname, lastname, username, email, password) VALUES ('$firstname', '$lastname', '$username', '$email', '$password')";
-        $result = $pdo->query($sql);
-        if($result->execute()){
-            echo '<p style="color: green;">User registration successful!</p>';
-        }else{
-            echo '<p style="color: red;">User registration failed!</p>';
-        }
-    }
-
+session_start();
+require_once "login.php";
+include ("Functions.php");
+try{
+    $pdo = new PDO($dsn, $dbUser, $dbPassword);
+}catch(PDOException $e){
+    die("Could not connect to the database." . "</body></hmtl>");
 }
-?>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+$ifRegistered = false;
 
-<div class="container mt-4">
-    <div class="card shadow">
-        <div class="card-header">
-            <h3>Register</h3>
-        </div>
-        <div class="card-body">
-            <form method="post" action="">
-                <div class="form-group">
-                    <label for="firstname">First Name:</label>
-                    <input type="text" class="form-control" id="firstname" name="firstname" required>
-                </div>
-                <div class="form-group">
-                    <label for="lastname">Last Name:</label>
-                    <input type="text" class="form-control" id="lastname" name="lastname" required>
-                </div>
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" class="form-control" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </div>
-</div>
+if(isset($_POST['RegisterPressed'])){
+    $email = trim($_POST['email']);
+    $fname = trim($_POST['fname']);
+    $lname = trim($_POST['lname']);
+    $password = trim($_POST['password']);
+    $confirmPassword = trim($_POST['confirmPassword']);
 
+    $emailError = '';
+    $fnameError ='';
+    $lnameError ='';
+    $passwordError ='';
+    $confirmPasswordError ='';
+
+
+
+    if(empty($email))
+        $emailError = "Please enter your email.";
+    if(empty($fname))
+        $fnameError = 'Please enter your first name.';
+    if(empty($lname))
+        $lnameError = 'Please enter your last name.';
+    if(empty($password))
+        $passwordError = 'Please enter your password.';
+    if(empty($confirmPassword))
+        $confirmPasswordError = 'Please re-enter your password.';
+
+    if(empty($emailError) && empty($fnameError) && empty($lnameError) && empty($passwordError) && empty($confirmPasswordError)){
+        if ($password != $confirmPassword) {
+            $passwordError = "Password entries must match.";
+        } else if (preg_match("/.{6,}/", $password) == 0) {
+            $passwordError = "Passwords must have a length of 6 or more characters.";
+        } else {
+            //Function Found the the file: Functions.php
+            addUser($pdo, $fname, $lname, $email, $password);
+            $ifRegistered = true;
+        }
+    }
+}//end of isset
+
+if(!$ifRegistered){
+    ?>
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Register Page</title>
+    </head>
+    <body>
+
+    <form method="POST">
+        <h2>Register Page</h2>
+        <br><br>
+        Email:<input type = "email" name = "email" placeholder="email" required>
+        <?php echo '<p style="color: red;">' . $emailError . '</p>';?>
+
+        <br>
+
+        First Name: <input type = "text" name = "fname" placeholder="First Name" required>
+        <?php echo '<p style="color: red;">' . $fnameError . '</p>';?>
+        <br>
+        Last Name:
+        <input type = "text" name = "lname" placeholder="Last Name" required>
+        <?php echo '<p style="color: red;">' . $lnameError . '</p>';?>
+        <br>
+        Password:
+        <input type = "password" name = "password" placeholder="Password" required>
+        <?php echo '<p style="color: red;">' . $passwordError . '</p>';?>
+        <br>
+        Confirm Password:
+        <input type = "password" name = "confirmPassword" placeholder="Re-enter Password" required>
+        <?php echo '<p style="color: red;">' . $confirmPasswordError . '</p>';?>
+        <br>
+
+        <input type="submit" name="RegisterPressed" value="Register">
+        <br><br>
+        Already have an existing account? <a href = "UserLogin.php"> Click to Login. </a>
+    </form>
+    </body>
+    </html>
+<?php }else{
+    echo <<< form
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Successful</title>
+</head>
+<body>
+<p>Hello $fname. We are thankful that you selected to register for our website. Now that
+you have an account feel free to<a href = "UserLogin.php"> try our site. </a></p>
 </body>
 </html>
+form;
+
+}?>
