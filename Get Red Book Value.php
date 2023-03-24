@@ -161,6 +161,7 @@ if (isset($_POST['submit-button'])) {
 
     } else {
         echo "<br><br>There is no ", $carYear , " ", $carMake , " ", $carModel , " in our database.";
+            echo "<br><p><a href=\"Get%20Red%20Book%20Value.php\">Look for another car value</a></p>\n";
         $displayform = false;
     }
 
